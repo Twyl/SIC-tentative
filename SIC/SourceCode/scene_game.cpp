@@ -44,8 +44,8 @@ void game_init()
 
 	
 
-	slime.pos.x = 0;
-	slime.pos.y = 0;
+	slime.pos.x = 340;
+	slime.pos.y = 60;
 	
 }
 
@@ -63,6 +63,7 @@ void game_update()
 	{
 	case 0:
 		///////////初期設定///////////
+		Stage = sprite_load(L"./Data/Images/Stage.png");
 		Mapchip = sprite_load(L"./Data/Images/パネル素材.png");
 		p_slime = sprite_load(L"./Data/Images/slime_idle.png");
 		game_state++;
@@ -81,9 +82,9 @@ void game_update()
 		{
 			slime.pos.y = slime.pos.y - 60;
 
-			if (slime.pos.y < 0)
+			if (slime.pos.y < 60)
 			{
-				slime.pos.y = 0;
+				slime.pos.y = 60;
 			}
 		}
 
@@ -92,9 +93,9 @@ void game_update()
 		{
 			slime.pos.x = slime.pos.x - 60;
 
-			if (slime.pos.x < 0)
+			if (slime.pos.x < 340)
 			{
-				slime.pos.x = 0;
+				slime.pos.x = 340;
 			}
 		}
 		
@@ -103,9 +104,9 @@ void game_update()
 		{
 			slime.pos.y = slime.pos.y + 60;
 
-			if (slime.pos.y >= 540)
+			if (slime.pos.y >= 600)
 			{
-				slime.pos.y = 540;
+				slime.pos.y = 600;
 			}
 		}
 
@@ -114,9 +115,9 @@ void game_update()
 		{
 			slime.pos.x = slime.pos.x + 60;
 
-			if (slime.pos.x >= 540)
+			if (slime.pos.x >= 880)
 			{
-				slime.pos.x = 540;
+				slime.pos.x = 880;
 			}
 		}
 	
@@ -140,13 +141,20 @@ void game_render()
 	{
 		for (int j = 0; j < 10; j++)
 		{
-			panels[i][j].
+			panels[i][j];//テキストファイルからの読み込み(作業中)
 		}
 	}
 
 	
+	sprite_render
+	(
+		Stage,
+		340, 60,
+		1.1,1.1
+	);
 
-	sprite_render(
+	sprite_render
+	(
 		p_slime,
 		slime.pos.x, slime.pos.y,
 		1, 1,
@@ -154,4 +162,6 @@ void game_render()
 		60, 60,
 		0, 0
 	);
+
+
 }

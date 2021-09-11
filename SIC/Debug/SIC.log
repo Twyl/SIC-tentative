@@ -1,17 +1,5 @@
-﻿  main.cpp
-  scene_game.cpp
-C:\Users\2210338\OneDrive - yamaguchigakuen\デスクトップ\SIC\SIC-tentative\SIC\SourceCode\scene_game.cpp(133,27): warning C4244: '=': 'float' から 'int' への変換です。データが失われる可能性があります。
+﻿  scene_game.cpp
 C:\Users\2210338\OneDrive - yamaguchigakuen\デスクトップ\SIC\SIC-tentative\SIC\SourceCode\scene_game.cpp(134,27): warning C4244: '=': 'float' から 'int' への変換です。データが失われる可能性があります。
-C:\Users\2210338\OneDrive - yamaguchigakuen\デスクトップ\SIC\SIC-tentative\SIC\SourceCode\scene_game.cpp(144,3): error C2059: 構文エラー: '}'
-C:\Users\2210338\OneDrive - yamaguchigakuen\デスクトップ\SIC\SIC-tentative\SIC\SourceCode\scene_game.cpp(149,2): error C2039: 'sprite_render': 'Panel' のメンバーではありません
-C:\Users\2210338\OneDrive - yamaguchigakuen\デスクトップ\SIC\SIC-tentative\SIC\SourceCode\scene_game.cpp(26): message : 'Panel' の宣言を確認してください
-C:\Users\2210338\OneDrive - yamaguchigakuen\デスクトップ\SIC\SIC-tentative\SIC\SourceCode\scene_game.cpp(150,3): error C2039: 'p_slime': 'Panel' のメンバーではありません
-C:\Users\2210338\OneDrive - yamaguchigakuen\デスクトップ\SIC\SIC-tentative\SIC\SourceCode\scene_game.cpp(26): message : 'Panel' の宣言を確認してください
-C:\Users\2210338\OneDrive - yamaguchigakuen\デスクトップ\SIC\SIC-tentative\SIC\SourceCode\scene_game.cpp(151,3): error C2039: 'slime': 'Panel' のメンバーではありません
-C:\Users\2210338\OneDrive - yamaguchigakuen\デスクトップ\SIC\SIC-tentative\SIC\SourceCode\scene_game.cpp(26): message : 'Panel' の宣言を確認してください
-C:\Users\2210338\OneDrive - yamaguchigakuen\デスクトップ\SIC\SIC-tentative\SIC\SourceCode\scene_game.cpp(151,9): error C2039: 'pos': 'Panel' のメンバーではありません
-C:\Users\2210338\OneDrive - yamaguchigakuen\デスクトップ\SIC\SIC-tentative\SIC\SourceCode\scene_game.cpp(26): message : 'Panel' の宣言を確認してください
-C:\Users\2210338\OneDrive - yamaguchigakuen\デスクトップ\SIC\SIC-tentative\SIC\SourceCode\scene_game.cpp(149,2): error C2065: 'sprite_render': 定義されていない識別子です。
-  scene_stage.cpp
-  scene_title.cpp
-  コードを生成中...
+C:\Users\2210338\OneDrive - yamaguchigakuen\デスクトップ\SIC\SIC-tentative\SIC\SourceCode\scene_game.cpp(135,27): warning C4244: '=': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\2210338\OneDrive - yamaguchigakuen\デスクトップ\SIC\SIC-tentative\SIC\SourceCode\scene_game.cpp(154,2): warning C4305: '引数': 'double' から 'float' へ切り詰めます。
+  SIC.vcxproj -> C:\Users\2210338\OneDrive - yamaguchigakuen\デスクトップ\SIC\SIC-tentative\SIC\Debug\SIC.exe
