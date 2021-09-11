@@ -6,18 +6,12 @@ int game_timer;
 
 
 
-int textread()		//メモ帳からデータを持ってくる関数
-{
+//int textread()		//メモ帳からデータを持ってくる関数
+//{
+//
+//}
 
-}
 
-for (int i; i < 10; i++)
-{
-	for (int i; i < 10; 10)
-	{
-
-	}
-}
 
 void game_init()
 {
@@ -46,6 +40,9 @@ void game_update()
 
 	case 2:
 		///////////通常時///////////
+
+	//ステージ読み込み		
+	
 		break;
 	}
 

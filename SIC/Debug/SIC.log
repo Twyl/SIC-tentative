@@ -1,12 +1,9 @@
-﻿  scene_game.cpp
-C:\Users\2210338\OneDrive - yamaguchigakuen\デスクトップ\SIC\SIC-tentative\SIC\SourceCode\scene_game.cpp(14,1): error C2059: 構文エラー: 'for'
-C:\Users\2210338\OneDrive - yamaguchigakuen\デスクトップ\SIC\SIC-tentative\SIC\SourceCode\scene_game.cpp(14,1): error C2143: 構文エラー: ')' が ';' の前にありません。
-C:\Users\2210338\OneDrive - yamaguchigakuen\デスクトップ\SIC\SIC-tentative\SIC\SourceCode\scene_game.cpp(14,15): error C2143: 構文エラー: ';' が '<' の前にありません。
-C:\Users\2210338\OneDrive - yamaguchigakuen\デスクトップ\SIC\SIC-tentative\SIC\SourceCode\scene_game.cpp(14,15): error C4430: 型指定子がありません - int と仮定しました。メモ: C++ は int を既定値としてサポートしていません
-C:\Users\2210338\OneDrive - yamaguchigakuen\デスクトップ\SIC\SIC-tentative\SIC\SourceCode\scene_game.cpp(14,22): error C2143: 構文エラー: ';' が '++' の前にありません。
-C:\Users\2210338\OneDrive - yamaguchigakuen\デスクトップ\SIC\SIC-tentative\SIC\SourceCode\scene_game.cpp(14,22): error C4430: 型指定子がありません - int と仮定しました。メモ: C++ は int を既定値としてサポートしていません
-C:\Users\2210338\OneDrive - yamaguchigakuen\デスクトップ\SIC\SIC-tentative\SIC\SourceCode\scene_game.cpp(14,21): error C2086: 'int i': 再定義されました。
-C:\Users\2210338\OneDrive - yamaguchigakuen\デスクトップ\SIC\SIC-tentative\SIC\SourceCode\scene_game.cpp(14): message : 'i' の宣言を確認してください
-C:\Users\2210338\OneDrive - yamaguchigakuen\デスクトップ\SIC\SIC-tentative\SIC\SourceCode\scene_game.cpp(14,24): error C2059: 構文エラー: ')'
-C:\Users\2210338\OneDrive - yamaguchigakuen\デスクトップ\SIC\SIC-tentative\SIC\SourceCode\scene_game.cpp(15,1): error C2143: 構文エラー: ';' が '{' の前にありません。
-C:\Users\2210338\OneDrive - yamaguchigakuen\デスクトップ\SIC\SIC-tentative\SIC\SourceCode\scene_game.cpp(15,1): error C2447: '{': 対応する関数ヘッダーがありません (旧形式の仮引数リスト?)
+﻿  main.cpp
+C:\Users\2210338\OneDrive - yamaguchigakuen\デスクトップ\SIC\SIC-tentative\SIC\SourceCode\common.h(25,31): error C2078: 初期化子の数が多すぎます。
+  scene_game.cpp
+C:\Users\2210338\OneDrive - yamaguchigakuen\デスクトップ\SIC\SIC-tentative\SIC\SourceCode\common.h(25,31): error C2078: 初期化子の数が多すぎます。
+  scene_title.cpp
+C:\Users\2210338\OneDrive - yamaguchigakuen\デスクトップ\SIC\SIC-tentative\SIC\SourceCode\common.h(25,31): error C2078: 初期化子の数が多すぎます。
+  scene_stage.cpp
+C:\Users\2210338\OneDrive - yamaguchigakuen\デスクトップ\SIC\SIC-tentative\SIC\SourceCode\common.h(25,31): error C2078: 初期化子の数が多すぎます。
+  コードを生成中...

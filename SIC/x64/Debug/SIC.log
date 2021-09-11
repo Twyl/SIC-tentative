@@ -1,0 +1,12 @@
+﻿  scene_game.cpp
+C:\Users\2210338\OneDrive - yamaguchigakuen\デスクトップ\SIC\SIC-tentative\SIC\SourceCode\scene_game.cpp(14,1): error C2059: 構文エラー: 'for'
+C:\Users\2210338\OneDrive - yamaguchigakuen\デスクトップ\SIC\SIC-tentative\SIC\SourceCode\scene_game.cpp(14,1): error C2143: 構文エラー: ')' が ';' の前にありません。
+C:\Users\2210338\OneDrive - yamaguchigakuen\デスクトップ\SIC\SIC-tentative\SIC\SourceCode\scene_game.cpp(14,17): error C2143: 構文エラー: ';' が '<' の前にありません。
+C:\Users\2210338\OneDrive - yamaguchigakuen\デスクトップ\SIC\SIC-tentative\SIC\SourceCode\scene_game.cpp(14,17): error C4430: 型指定子がありません - int と仮定しました。メモ: C++ は int を既定値としてサポートしていません
+C:\Users\2210338\OneDrive - yamaguchigakuen\デスクトップ\SIC\SIC-tentative\SIC\SourceCode\scene_game.cpp(14,24): error C2143: 構文エラー: ';' が '++' の前にありません。
+C:\Users\2210338\OneDrive - yamaguchigakuen\デスクトップ\SIC\SIC-tentative\SIC\SourceCode\scene_game.cpp(14,24): error C4430: 型指定子がありません - int と仮定しました。メモ: C++ は int を既定値としてサポートしていません
+C:\Users\2210338\OneDrive - yamaguchigakuen\デスクトップ\SIC\SIC-tentative\SIC\SourceCode\scene_game.cpp(14,23): error C2086: 'int i': 再定義されました。
+C:\Users\2210338\OneDrive - yamaguchigakuen\デスクトップ\SIC\SIC-tentative\SIC\SourceCode\scene_game.cpp(14): message : 'i' の宣言を確認してください
+C:\Users\2210338\OneDrive - yamaguchigakuen\デスクトップ\SIC\SIC-tentative\SIC\SourceCode\scene_game.cpp(14,26): error C2059: 構文エラー: ')'
+C:\Users\2210338\OneDrive - yamaguchigakuen\デスクトップ\SIC\SIC-tentative\SIC\SourceCode\scene_game.cpp(15,1): error C2143: 構文エラー: ';' が '{' の前にありません。
+C:\Users\2210338\OneDrive - yamaguchigakuen\デスクトップ\SIC\SIC-tentative\SIC\SourceCode\scene_game.cpp(15,1): error C2447: '{': 対応する関数ヘッダーがありません (旧形式の仮引数リスト?)
