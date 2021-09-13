@@ -17,6 +17,8 @@ int old_slimeY;
 int old_panelX;
 int old_panelY;
 
+bool gameover_flag = false;
+
 
 Sprite* Frame;
 Sprite* Mapchip;
@@ -25,32 +27,23 @@ Sprite* panel;
 
 void Change_panel() {
 
-	if (Mapchip_list[old_panelY][old_panelX] == 1)
+	if (Mapchip_list[old_slimeY][old_slimeX] == 1)
 	{
-		Mapchip_list[old_panelY][old_panelX] = 0;
+		Mapchip_list[old_slimeY][old_slimeX] = 0;
 	}
 
 
 
-	if (Mapchip_list[old_panelY][old_panelX] == 2)
+	if (Mapchip_list[old_slimeY][old_slimeX] == 2)
 	{
-		Mapchip_list[old_panelY][old_panelX] = 1;
+		Mapchip_list[old_slimeY][old_slimeX] = 1;
 	}
 
-	if (Mapchip_list[old_panelY][old_panelX] == 3)
-	{
-		Mapchip_list[old_panelY][old_panelX] = 2;
-	}
 
-	/*if (Mapchip_list[slime_mapY][slime_mapX] == 0)
+	if (Mapchip_list[old_slimeY][old_slimeX] == 3)
 	{
-		text_out(
-			1,
-			"GAMEOVER",
-			360, 340,
-			2, 2
-		);
-	}*/
+		Mapchip_list[old_slimeY][old_slimeX] = 2;
+	}
 
 }
 
@@ -109,12 +102,11 @@ void game_update()
 		///////////’Êí///////////
 
 
-		slime_mapX = (slime.pos.x - 340) / 60;
-		slime_mapY = (slime.pos.y - 60) / 60;
+		
 
 
 		//ã•ûŒü
-		if (GetAsyncKeyState('W') & 1) 
+		if (GetAsyncKeyState('W') & 1&&gameover_flag==false) 
 		{
 			old_slimeX = slime_mapX;
 			old_slimeY = slime_mapY;
@@ -131,7 +123,7 @@ void game_update()
 		}
 
 		//¶•ûŒü
-		if (GetAsyncKeyState('A') & 1)
+		if (GetAsyncKeyState('A') & 1 && gameover_flag == false)
 		{
 			old_slimeX = slime_mapX;
 			old_slimeY = slime_mapY;
@@ -148,7 +140,7 @@ void game_update()
 		}
 		
 		//‰º•ûŒü
-		if (GetAsyncKeyState('S') & 1)
+		if (GetAsyncKeyState('S') & 1 && gameover_flag == false)
 		{
 			old_slimeX = slime_mapX;
 			old_slimeY = slime_mapY;
@@ -165,7 +157,7 @@ void game_update()
 		}
 
 		//‰E•ûŒü
-		if (GetAsyncKeyState('D') & 1)
+		if (GetAsyncKeyState('D') & 1 && gameover_flag == false)
 		{
 			old_slimeX = slime_mapX;
 			old_slimeY = slime_mapY;
@@ -180,7 +172,14 @@ void game_update()
 			Change_panel();
 
 		}
+		slime_mapX = (slime.pos.x - 340) / 60;
+		slime_mapY = (slime.pos.y - 60) / 60;
 	
+		if (Mapchip_list[slime_mapY][slime_mapX] == 0)
+		{
+			gameover_flag = true;
+		}
+
 		break;
 	}
 
@@ -242,4 +241,15 @@ void game_render()
 		1.15, 1.15
 	);
 
+	
+	
+	if (gameover_flag)
+	{
+		text_out(
+			1,
+			"GAMEOVER",
+			360, 340,
+			2, 2
+		);
+	}
 }
