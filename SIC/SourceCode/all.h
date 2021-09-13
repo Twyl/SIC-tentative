@@ -12,6 +12,7 @@
 #include "scene_game.h"
 #include "scene_stage.h"
 
+
 using namespace GameLib;
 using namespace input;
 

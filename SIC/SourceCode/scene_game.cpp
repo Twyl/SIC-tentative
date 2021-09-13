@@ -1,4 +1,5 @@
 #include "all.h"
+#include "Stage_data.h"
 
 int game_state;
 int game_timer;
@@ -10,9 +11,14 @@ int panelstate;
 int slime_mapX;
 int slime_mapY;
 
+int old_slimeX;
+int old_slimeY;
+
+int old_panelX;
+int old_panelY;
 
 
-Sprite* Stage;
+Sprite* Frame;
 Sprite* Mapchip;
 Sprite* p_slime;
 Sprite* panel;
@@ -22,12 +28,6 @@ Sprite* panel;
 //{
 //
 //}
-
-struct Panel {
-	bool onoff;
-	int Count;
-	int panelstate;
-};
 
 
 struct Charactor {
@@ -46,12 +46,18 @@ void game_init()
 
 	slime.pos.x = 340;
 	slime.pos.y = 60;
+
+	old_slimeX = 0;
+	old_slimeY = 0;
+
+	old_panelX = 0;
+	old_panelY = 0;
 	
 }
 
 void game_deinit()
 {
-	safe_delete(Stage);
+	safe_delete(Frame);
 	safe_delete(Mapchip);
 	safe_delete(p_slime);
 	safe_delete(panel);
@@ -63,7 +69,7 @@ void game_update()
 	{
 	case 0:
 		///////////初期設定///////////
-		Stage = sprite_load(L"./Data/Images/Stage.png");
+		Frame = sprite_load(L"./Data/Images/Frame.png");
 		Mapchip = sprite_load(L"./Data/Images/パネル素材.png");
 		p_slime = sprite_load(L"./Data/Images/slime_idle.png");
 		game_state++;
@@ -80,6 +86,7 @@ void game_update()
 		//上方向
 		if (GetAsyncKeyState('W') & 1) 
 		{
+			old_slimeY = slime.pos.y;
 			slime.pos.y = slime.pos.y - 60;
 
 			if (slime.pos.y < 60)
@@ -91,6 +98,7 @@ void game_update()
 		//左方向
 		if (GetAsyncKeyState('A') & 1)
 		{
+			old_slimeX = slime.pos.x;
 			slime.pos.x = slime.pos.x - 60;
 
 			if (slime.pos.x < 340)
@@ -102,6 +110,7 @@ void game_update()
 		//下方向
 		if (GetAsyncKeyState('S') & 1)
 		{
+			old_slimeY = slime.pos.y;
 			slime.pos.y = slime.pos.y + 60;
 
 			if (slime.pos.y >= 600)
@@ -113,6 +122,7 @@ void game_update()
 		//右方向
 		if (GetAsyncKeyState('D') & 1)
 		{
+			old_slimeX = slime.pos.x;
 			slime.pos.x = slime.pos.x + 60;
 
 			if (slime.pos.x >= 880)
@@ -129,29 +139,71 @@ void game_update()
 
 void game_render()
 {
-	GameLib::clear(1, 1, 1);
+	GameLib::clear(0, 0, 0);
 
-	slime_mapX = slime.pos.x / 60;
-	slime_mapY = slime.pos.y / 60;
+	old_panelX = (old_slimeX - 340) / 60;
+	old_panelY = (old_slimeY - 60) / 60;
 
-	//マップチップ配列
-	Panel panels[10][10];
+	slime_mapX = (slime.pos.x - 340) / 60;
+	slime_mapY = (slime.pos.y - 60) / 60;
 
-	for (int i = 0; i < 10; i++)
+
+	//マップチップ描画
+	for (int y = 0; y < MAPSIZE_H; y++)
 	{
-		for (int j = 0; j < 10; j++)
+		for (int x = 0; x < MAPSIZE_W; x++)
 		{
-			panels[i][j];//テキストファイルからの読み込み(作業中)
+			int chip_id = Mapchip_list[y][x];
+
+
+			float chip_pos_x = (float)(chip_id % MAPSIZE_W) * MAPCHIP_W - 60;	//テクスチャ座標
+			float chip_pos_y = (float)(chip_id / MAPSIZE_H) * MAPCHIP_H;
+
+			int draw_x = MAPCHIP_W * x + 340;		//マップチップの描画x座標
+			int draw_y = MAPCHIP_H * y + 60;		//マップチップの描画y座標
+
+			sprite_render(
+				Mapchip,
+				draw_x, draw_y,
+				1, 1,
+				chip_pos_x, chip_pos_y,
+				MAPCHIP_W, MAPCHIP_H,
+				0, 0
+			);
+
+
+
+			if (Mapchip_list[old_panelY][old_panelX] == 1)
+			{
+				Mapchip_list[old_panelY][old_panelX] = 0;
+			}
+
+	
+
+			if (Mapchip_list[old_panelY][old_panelX] == 2)
+			{
+				Mapchip_list[old_panelY][old_panelX] = 1;
+			}
+			
+			if (Mapchip_list[old_panelY][old_panelX] == 3)
+			{
+				Mapchip_list[old_panelY][old_panelX] = 2;
+			}
+
+			/*if (Mapchip_list[slime_mapY][slime_mapX] == 0)
+			{
+				text_out(
+					1,
+					"GAMEOVER",
+					360, 340,
+					2, 2
+				);
+			}*/
 		}
 	}
 
 	
-	sprite_render
-	(
-		Stage,
-		340, 60,
-		1.1,1.1
-	);
+
 
 	sprite_render
 	(
@@ -163,5 +215,11 @@ void game_render()
 		0, 0
 	);
 
+	sprite_render
+	(
+		Frame,
+		290, 25,
+		1.15, 1.15
+	);
 
 }
