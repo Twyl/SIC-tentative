@@ -1,11 +1,7 @@
 ﻿  scene_game.cpp
-C:\Users\2210338\OneDrive - yamaguchigakuen\デスクトップ\SIC\SIC-tentative\SIC\SourceCode\scene_game.cpp(89,26): warning C4244: '=': 'float' から 'int' への変換です。データが失われる可能性があります。
-C:\Users\2210338\OneDrive - yamaguchigakuen\デスクトップ\SIC\SIC-tentative\SIC\SourceCode\scene_game.cpp(101,26): warning C4244: '=': 'float' から 'int' への変換です。データが失われる可能性があります。
-C:\Users\2210338\OneDrive - yamaguchigakuen\デスクトップ\SIC\SIC-tentative\SIC\SourceCode\scene_game.cpp(113,26): warning C4244: '=': 'float' から 'int' への変換です。データが失われる可能性があります。
-C:\Users\2210338\OneDrive - yamaguchigakuen\デスクトップ\SIC\SIC-tentative\SIC\SourceCode\scene_game.cpp(125,26): warning C4244: '=': 'float' から 'int' への変換です。データが失われる可能性があります。
-C:\Users\2210338\OneDrive - yamaguchigakuen\デスクトップ\SIC\SIC-tentative\SIC\SourceCode\scene_game.cpp(147,35): warning C4244: '=': 'float' から 'int' への変換です。データが失われる可能性があります。
-C:\Users\2210338\OneDrive - yamaguchigakuen\デスクトップ\SIC\SIC-tentative\SIC\SourceCode\scene_game.cpp(148,34): warning C4244: '=': 'float' から 'int' への変換です。データが失われる可能性があります。
-C:\Users\2210338\OneDrive - yamaguchigakuen\デスクトップ\SIC\SIC-tentative\SIC\SourceCode\scene_game.cpp(167,13): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
-C:\Users\2210338\OneDrive - yamaguchigakuen\デスクトップ\SIC\SIC-tentative\SIC\SourceCode\scene_game.cpp(167,5): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
-C:\Users\2210338\OneDrive - yamaguchigakuen\デスクトップ\SIC\SIC-tentative\SIC\SourceCode\scene_game.cpp(223,2): warning C4305: '引数': 'double' から 'float' へ切り詰めます。
+C:\Users\2210338\OneDrive - yamaguchigakuen\デスクトップ\SIC\SIC-tentative\SIC\SourceCode\scene_game.cpp(112,36): warning C4244: '=': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\2210338\OneDrive - yamaguchigakuen\デスクトップ\SIC\SIC-tentative\SIC\SourceCode\scene_game.cpp(113,35): warning C4244: '=': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\2210338\OneDrive - yamaguchigakuen\デスクトップ\SIC\SIC-tentative\SIC\SourceCode\scene_game.cpp(213,13): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\2210338\OneDrive - yamaguchigakuen\デスクトップ\SIC\SIC-tentative\SIC\SourceCode\scene_game.cpp(213,5): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\2210338\OneDrive - yamaguchigakuen\デスクトップ\SIC\SIC-tentative\SIC\SourceCode\scene_game.cpp(243,2): warning C4305: '引数': 'double' から 'float' へ切り詰めます。
   SIC.vcxproj -> C:\Users\2210338\OneDrive - yamaguchigakuen\デスクトップ\SIC\SIC-tentative\SIC\Debug\SIC.exe

@@ -23,11 +23,36 @@ Sprite* Mapchip;
 Sprite* p_slime;
 Sprite* panel;
 
+void Change_panel() {
 
-//int textread()		//メモ帳からデータを持ってくる関数
-//{
-//
-//}
+	if (Mapchip_list[old_panelY][old_panelX] == 1)
+	{
+		Mapchip_list[old_panelY][old_panelX] = 0;
+	}
+
+
+
+	if (Mapchip_list[old_panelY][old_panelX] == 2)
+	{
+		Mapchip_list[old_panelY][old_panelX] = 1;
+	}
+
+	if (Mapchip_list[old_panelY][old_panelX] == 3)
+	{
+		Mapchip_list[old_panelY][old_panelX] = 2;
+	}
+
+	/*if (Mapchip_list[slime_mapY][slime_mapX] == 0)
+	{
+		text_out(
+			1,
+			"GAMEOVER",
+			360, 340,
+			2, 2
+		);
+	}*/
+
+}
 
 
 struct Charactor {
@@ -83,52 +108,77 @@ void game_update()
 	case 2:
 		///////////通常時///////////
 
+
+		slime_mapX = (slime.pos.x - 340) / 60;
+		slime_mapY = (slime.pos.y - 60) / 60;
+
+
 		//上方向
 		if (GetAsyncKeyState('W') & 1) 
 		{
-			old_slimeY = slime.pos.y;
+			old_slimeX = slime_mapX;
+			old_slimeY = slime_mapY;
+
 			slime.pos.y = slime.pos.y - 60;
 
 			if (slime.pos.y < 60)
 			{
 				slime.pos.y = 60;
 			}
+
+			Change_panel();
+			
 		}
 
 		//左方向
 		if (GetAsyncKeyState('A') & 1)
 		{
-			old_slimeX = slime.pos.x;
+			old_slimeX = slime_mapX;
+			old_slimeY = slime_mapY;
+
 			slime.pos.x = slime.pos.x - 60;
 
 			if (slime.pos.x < 340)
 			{
 				slime.pos.x = 340;
 			}
+
+			Change_panel();
+
 		}
 		
 		//下方向
 		if (GetAsyncKeyState('S') & 1)
 		{
-			old_slimeY = slime.pos.y;
+			old_slimeX = slime_mapX;
+			old_slimeY = slime_mapY;
+
 			slime.pos.y = slime.pos.y + 60;
 
 			if (slime.pos.y >= 600)
 			{
 				slime.pos.y = 600;
 			}
+
+			Change_panel();
+
 		}
 
 		//右方向
 		if (GetAsyncKeyState('D') & 1)
 		{
-			old_slimeX = slime.pos.x;
+			old_slimeX = slime_mapX;
+			old_slimeY = slime_mapY;
+
 			slime.pos.x = slime.pos.x + 60;
 
 			if (slime.pos.x >= 880)
 			{
 				slime.pos.x = 880;
 			}
+
+			Change_panel();
+
 		}
 	
 		break;
@@ -141,11 +191,7 @@ void game_render()
 {
 	GameLib::clear(0, 0, 0);
 
-	old_panelX = (old_slimeX - 340) / 60;
-	old_panelY = (old_slimeY - 60) / 60;
 
-	slime_mapX = (slime.pos.x - 340) / 60;
-	slime_mapY = (slime.pos.y - 60) / 60;
 
 
 	//マップチップ描画
@@ -173,32 +219,6 @@ void game_render()
 
 
 
-			if (Mapchip_list[old_panelY][old_panelX] == 1)
-			{
-				Mapchip_list[old_panelY][old_panelX] = 0;
-			}
-
-	
-
-			if (Mapchip_list[old_panelY][old_panelX] == 2)
-			{
-				Mapchip_list[old_panelY][old_panelX] = 1;
-			}
-			
-			if (Mapchip_list[old_panelY][old_panelX] == 3)
-			{
-				Mapchip_list[old_panelY][old_panelX] = 2;
-			}
-
-			/*if (Mapchip_list[slime_mapY][slime_mapX] == 0)
-			{
-				text_out(
-					1,
-					"GAMEOVER",
-					360, 340,
-					2, 2
-				);
-			}*/
 		}
 	}
 
