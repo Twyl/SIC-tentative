@@ -13,10 +13,6 @@
 
 
 
-//ƒpƒlƒ‹‚Ìó‘Ô
-#define Normal	1
-#define Frozen	2
-
 
 extern int curScene;
 extern int nextScene;
