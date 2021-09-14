@@ -6,7 +6,8 @@ int game_timer;
 
 int panelstate;
 
-
+int panel_mapX;
+int panel_mapY;
 
 int slime_mapX;
 int slime_mapY;
@@ -17,13 +18,17 @@ int old_slimeY;
 int old_panelX;
 int old_panelY;
 
+int clearCount;
+
 bool gameover_flag = false;
+bool gameclear_flag = false;
 
 
 Sprite* Frame;
 Sprite* Mapchip;
 Sprite* p_slime;
 Sprite* panel;
+Sprite* Redpanel;
 
 void Change_panel() {
 
@@ -60,16 +65,19 @@ void game_init()
 	game_state = 0;
 	game_timer = 0;
 
+	panel_mapX = 340;
+	panel_mapY = 60;
 	
 
-	slime.pos.x = 340;
-	slime.pos.y = 60;
+
 
 	old_slimeX = 0;
 	old_slimeY = 0;
 
 	old_panelX = 0;
 	old_panelY = 0;
+
+	clearCount = 0;
 	
 }
 
@@ -79,6 +87,7 @@ void game_deinit()
 	safe_delete(Mapchip);
 	safe_delete(p_slime);
 	safe_delete(panel);
+	safe_delete(Redpanel);
 }
 
 void game_update()
@@ -90,6 +99,7 @@ void game_update()
 		Frame = sprite_load(L"./Data/Images/Frame.png");
 		Mapchip = sprite_load(L"./Data/Images/パネル素材.png");
 		p_slime = sprite_load(L"./Data/Images/slime_idle.png");
+		Redpanel = sprite_load(L"./Data/Images/RED.png");
 		game_state++;
 		/*fallthrough*/
 
@@ -97,14 +107,64 @@ void game_update()
 		///////////パラメータの設定///////////
 		game_state++;
 		/*fallthrough*/
-
 	case 2:
-		///////////通常時///////////
+		///////////スポーン場所選択///////////
+		if (GetAsyncKeyState('W') & 1)
+		{
+			panel_mapY = panel_mapY - 60;
 
+			if (panel_mapY < 60)
+			{
+				panel_mapY = 60;
+			}
+		}
+
+		if (GetAsyncKeyState('A') & 1)
+		{
+			panel_mapX = panel_mapX - 60;
+
+			if (panel_mapX < 340)
+			{
+				panel_mapX = 340;
+			}
+		}
+
+		if (GetAsyncKeyState('S') & 1)
+		{
+			panel_mapY = panel_mapY + 60;
+
+			if (panel_mapY >= 600)
+			{
+				panel_mapY = 600;
+			}
+		}
+
+		if (GetAsyncKeyState('D') & 1)
+		{
+			panel_mapX = panel_mapX + 60;
+
+			if (panel_mapX >= 880)
+			{
+				panel_mapX = 880;
+			}
+		}
+
+		if (TRG(0) & PAD_START)
+		{
 
 		
 
+			game_state++;
+		}
+		slime.pos.x = panel_mapX;
+		slime.pos.y = panel_mapY;
 
+		break;
+
+	case 3:
+		///////////通常時///////////
+
+		
 		//上方向
 		if (GetAsyncKeyState('W') & 1&&gameover_flag==false) 
 		{
@@ -177,8 +237,32 @@ void game_update()
 	
 		if (Mapchip_list[slime_mapY][slime_mapX] == 0)
 		{
-			gameover_flag = true;
+			clearCount = 0;
+
+			for (int i = 0; i < MAPSIZE_H ; i++)
+			{
+				for (int j = 0; j < MAPSIZE_W; j++)
+				{
+					if (Mapchip_list[i][j] ==0)
+					{
+						clearCount += 1;
+					}
+
+					if (clearCount == 100)
+					{
+						gameclear_flag = true;
+					}
+					
+					else
+					{ 
+						gameover_flag = true; 
+					}
+				}
+			}
+
 		}
+
+
 
 		break;
 	}
@@ -222,18 +306,34 @@ void game_render()
 	}
 
 	
+	switch (game_state)
+	{
+		case 2:
+			sprite_render
+			(
+				Redpanel,
+				panel_mapX, panel_mapY,
+				1, 1,
+				0, 0,
+				60, 60,
+				0, 0,
+				0,
+				1, 0, 0, 0.6
+			);
 
+			break;
 
-	sprite_render
-	(
-		p_slime,
-		slime.pos.x, slime.pos.y,
-		1, 1,
-		0, 0,
-		60, 60,
-		0, 0
-	);
-
+		case 3:
+			sprite_render
+			(
+				p_slime,
+				slime.pos.x, slime.pos.y,
+				1, 1,
+				0, 0,
+				60, 60,
+				0, 0
+			);		
+	}
 	sprite_render
 	(
 		Frame,
@@ -241,13 +341,23 @@ void game_render()
 		1.15, 1.15
 	);
 
-	
-	
-	if (gameover_flag)
+
+
+	if (gameover_flag && !gameclear_flag)
 	{
 		text_out(
 			1,
 			"GAMEOVER",
+			360, 340,
+			2, 2
+		);
+	}
+
+	if (gameclear_flag)
+	{
+		text_out(
+			1,
+			"GAMECLEAR",
 			360, 340,
 			2, 2
 		);
