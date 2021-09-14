@@ -362,4 +362,26 @@ void game_render()
 			2, 2
 		);
 	}
+
+	text_out(
+		1,
+		"DEMO",
+		1000, 100,
+		1, 1
+	);
+
+	text_out(
+		1,
+		"MOVE : WASD",
+		1000, 200,
+		0.7, 0.7
+	);
+
+	text_out(
+		1,
+		"DECIDE : ENTER",
+		970, 300,
+		0.7, 0.7
+	);
+
 }
