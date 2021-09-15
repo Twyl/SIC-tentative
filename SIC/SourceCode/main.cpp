@@ -28,6 +28,9 @@ int APIENTRY wWinMain(HINSTANCE, HINSTANCE, LPWSTR, int)
 			case SCENE_GAME:
 				game_deinit();
 				break;
+
+			case SCENE_RELOAD:
+				reload_deinit();
 			}
 
 			switch (nextScene)
@@ -42,6 +45,9 @@ int APIENTRY wWinMain(HINSTANCE, HINSTANCE, LPWSTR, int)
 			case SCENE_GAME:
 				game_init();
 				break;
+
+			case SCENE_RELOAD:
+				reload_init();
 			}
 			
 			curScene = nextScene;
@@ -65,6 +71,11 @@ int APIENTRY wWinMain(HINSTANCE, HINSTANCE, LPWSTR, int)
 			game_update();
 			game_render();
 			break;
+
+		case SCENE_RELOAD:
+			reload_update();
+			reload_render();
+			break;
 		}
 		
 
@@ -84,6 +95,10 @@ int APIENTRY wWinMain(HINSTANCE, HINSTANCE, LPWSTR, int)
 
 	case SCENE_GAME:
 		game_deinit();
+		break;
+
+	case SCENE_RELOAD:
+		reload_deinit();
 		break;
 	}
 

@@ -11,6 +11,7 @@
 #include "scene_title.h"
 #include "scene_game.h"
 #include "scene_stage.h"
+#include "scene_reload.h"
 
 
 using namespace GameLib;

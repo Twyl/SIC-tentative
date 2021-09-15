@@ -9,6 +9,8 @@ int panelstate;
 int panel_mapX;
 int panel_mapY;
 
+int panel2_mapX;
+
 int slime_mapX;
 int slime_mapY;
 
@@ -29,6 +31,8 @@ Sprite* Mapchip;
 Sprite* p_slime;
 Sprite* panel;
 Sprite* Redpanel;
+Sprite* Redpanel2;
+Sprite* button;
 
 void Change_panel() {
 
@@ -68,7 +72,7 @@ void game_init()
 	panel_mapX = 340;
 	panel_mapY = 60;
 	
-
+	panel2_mapX = 570;
 
 
 	old_slimeX = 0;
@@ -88,6 +92,8 @@ void game_deinit()
 	safe_delete(p_slime);
 	safe_delete(panel);
 	safe_delete(Redpanel);
+	safe_delete(Redpanel2);
+	safe_delete(button);
 }
 
 void game_update()
@@ -95,11 +101,15 @@ void game_update()
 	switch (game_state)
 	{
 	case 0:
+
 		///////////èâä˙ê›íË///////////
 		Frame = sprite_load(L"./Data/Images/Frame.png");
 		Mapchip = sprite_load(L"./Data/Images/ÉpÉlÉãëfçﬁ.png");
 		p_slime = sprite_load(L"./Data/Images/slime_idle.png");
 		Redpanel = sprite_load(L"./Data/Images/RED.png");
+		Redpanel2 = sprite_load(L"./Data/Images/RED.png");
+		button = sprite_load(L"./Data/Images/button.png");
+
 		game_state++;
 		/*fallthrough*/
 
@@ -251,11 +261,13 @@ void game_update()
 					if (clearCount == 100)
 					{
 						gameclear_flag = true;
+						game_state = 4;
 					}
 					
 					else
 					{ 
 						gameover_flag = true; 
+						game_state = 4;
 					}
 				}
 			}
@@ -265,9 +277,52 @@ void game_update()
 
 
 		break;
+
+
+		case 4:
+
+			
+			if (gameover_flag)
+			{
+				if (GetAsyncKeyState('A') & 1)
+				{
+					panel2_mapX -= 60;
+					if (panel2_mapX < 570)
+					{
+						panel2_mapX = 570;
+					}
+				}
+
+				if (GetAsyncKeyState('D') & 1)
+				{
+					panel2_mapX += 60;
+					if (panel2_mapX >= 630)
+					{
+						panel2_mapX = 630;
+					}
+				}
+
+				if (TRG(0) & PAD_START)
+				{
+					if (panel2_mapX == 570)
+					{
+						nextScene = SCENE_RELOAD;
+						break;
+					}
+
+					if (panel2_mapX == 630)
+					{
+						nextScene = SCENE_STAGE;
+						break;
+					}
+				}
+			}
 	}
 
 	game_timer++;
+
+	debug::setString("game_state%d", game_state);
+	debug::setString("panel_mapX%d", panel_mapX);
 }
 
 void game_render()
@@ -333,6 +388,50 @@ void game_render()
 				60, 60,
 				0, 0
 			);		
+
+			break;
+
+		case 4:
+
+			if (gameover_flag && !gameclear_flag)
+			{
+				text_out(
+					1,
+					"GAMEOVER",
+					360, 340,
+					2, 2
+				);
+
+				sprite_render(
+					button,
+					SCREEN_W / 2 - 10, 420,
+					1, 1,
+					60, 0,
+					120, 60,
+					60, 0
+				);
+
+				sprite_render(
+					Redpanel2,
+					panel2_mapX, 420,
+					1, 1,
+					0, 0,
+					60, 60,
+					0, 0,
+					0,
+					1, 0, 0, 0.6
+				);
+			}
+
+			if (gameclear_flag)
+			{
+				text_out(
+					1,
+					"GAMECLEAR",
+					360, 340,
+					2, 2
+				);
+			}
 	}
 	sprite_render
 	(
@@ -343,25 +442,7 @@ void game_render()
 
 
 
-	if (gameover_flag && !gameclear_flag)
-	{
-		text_out(
-			1,
-			"GAMEOVER",
-			360, 340,
-			2, 2
-		);
-	}
 
-	if (gameclear_flag)
-	{
-		text_out(
-			1,
-			"GAMECLEAR",
-			360, 340,
-			2, 2
-		);
-	}
 
 	text_out(
 		1,
