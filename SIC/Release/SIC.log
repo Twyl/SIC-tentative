@@ -1,0 +1,44 @@
+﻿  debug.cpp
+  dxtk_audio.cpp
+  font.cpp
+  frame_rate.cpp
+  game_lib.cpp
+  input_manager.cpp
+  obj2d_data.cpp
+  primitive.cpp
+  resource_manager.cpp
+  sprite.cpp
+  texture.cpp
+  vector.cpp
+  view_settings.cpp
+  audio.cpp
+  main.cpp
+  scene_game.cpp
+D:\Projects\SIC(仮)\SIC-tentative\SIC\SourceCode\scene_game.cpp(111,10): warning C4244: '=': 'float' から 'int' への変換です。データが失われる可能性があります。
+D:\Projects\SIC(仮)\SIC-tentative\SIC\SourceCode\scene_game.cpp(208,17): warning C4244: '=': 'int' から 'float' への変換です。データが失われる可能性があります。
+D:\Projects\SIC(仮)\SIC-tentative\SIC\SourceCode\scene_game.cpp(209,17): warning C4244: '=': 'int' から 'float' への変換です。データが失われる可能性があります。
+D:\Projects\SIC(仮)\SIC-tentative\SIC\SourceCode\scene_game.cpp(291,36): warning C4244: '=': 'float' から 'int' への変換です。データが失われる可能性があります。
+D:\Projects\SIC(仮)\SIC-tentative\SIC\SourceCode\scene_game.cpp(292,35): warning C4244: '=': 'float' から 'int' への変換です。データが失われる可能性があります。
+D:\Projects\SIC(仮)\SIC-tentative\SIC\SourceCode\scene_game.cpp(481,5): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
+D:\Projects\SIC(仮)\SIC-tentative\SIC\SourceCode\scene_game.cpp(480,13): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
+D:\Projects\SIC(仮)\SIC-tentative\SIC\SourceCode\scene_game.cpp(480,5): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
+D:\Projects\SIC(仮)\SIC-tentative\SIC\SourceCode\scene_game.cpp(476,13): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
+D:\Projects\SIC(仮)\SIC-tentative\SIC\SourceCode\scene_game.cpp(476,5): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
+D:\Projects\SIC(仮)\SIC-tentative\SIC\SourceCode\scene_game.cpp(503,4): warning C4305: '引数': 'double' から 'float' へ切り詰めます。
+D:\Projects\SIC(仮)\SIC-tentative\SIC\SourceCode\scene_game.cpp(496,17): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
+D:\Projects\SIC(仮)\SIC-tentative\SIC\SourceCode\scene_game.cpp(496,5): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
+D:\Projects\SIC(仮)\SIC-tentative\SIC\SourceCode\scene_game.cpp(548,5): warning C4305: '引数': 'double' から 'float' へ切り詰めます。
+D:\Projects\SIC(仮)\SIC-tentative\SIC\SourceCode\scene_game.cpp(541,6): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
+D:\Projects\SIC(仮)\SIC-tentative\SIC\SourceCode\scene_game.cpp(586,5): warning C4305: '引数': 'double' から 'float' へ切り詰めます。
+D:\Projects\SIC(仮)\SIC-tentative\SIC\SourceCode\scene_game.cpp(579,6): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
+D:\Projects\SIC(仮)\SIC-tentative\SIC\SourceCode\scene_game.cpp(596,2): warning C4305: '引数': 'double' から 'float' へ切り詰めます。
+D:\Projects\SIC(仮)\SIC-tentative\SIC\SourceCode\scene_game.cpp(611,2): warning C4305: '引数': 'double' から 'float' へ切り詰めます。
+D:\Projects\SIC(仮)\SIC-tentative\SIC\SourceCode\scene_game.cpp(618,2): warning C4305: '引数': 'double' から 'float' へ切り詰めます。
+  scene_reload.cpp
+  scene_title.cpp
+  scene_stage.cpp
+  コード生成しています。
+  Previous IPDB not found, fall back to full compilation.
+  All 569 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  コード生成が終了しました。
+  SIC.vcxproj -> D:\Projects\SIC(仮)\SIC-tentative\SIC\Release\SIC.exe
