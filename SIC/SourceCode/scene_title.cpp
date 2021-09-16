@@ -47,6 +47,7 @@ void title_update()
 		if (TRG(0) & PAD_START)
 		{
 			nextScene = SCENE_STAGE;
+			sound::play(0, 0);
 			break;
 		}
 

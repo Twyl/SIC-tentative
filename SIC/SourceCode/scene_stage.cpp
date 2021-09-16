@@ -47,6 +47,7 @@ void stage_update()
 		if (GetAsyncKeyState('A') & 1)
 		{
 			Stagenum -= 1;
+				sound::play(0, 0);
 			if (Stagenum <= 0)
 			{
 				Stagenum = 1;
@@ -55,9 +56,10 @@ void stage_update()
 		if (GetAsyncKeyState('D') & 1)
 		{
 			Stagenum += 1;
-			if (Stagenum >= 7)
+			sound::play(0, 0);
+			if (Stagenum >= 8)
 			{
-				Stagenum = 6;
+				Stagenum = 7;
 			}
 		}
 		if (TRG(0) & PAD_START)
@@ -65,6 +67,7 @@ void stage_update()
 			stageNum = Stagenum;
 
 			nextScene = SCENE_GAME;
+			sound::play(0, 0);
 			break;
 		}
 

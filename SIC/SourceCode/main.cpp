@@ -9,6 +9,8 @@ int APIENTRY wWinMain(HINSTANCE, HINSTANCE, LPWSTR, int)
 	//ゲームライブラリの初期設定
 	GameLib::init(L"SIC企画(仮)", SCREEN_W, SCREEN_H);
 
+	audio_init();
+
 	//ゲームループ
 	while (GameLib::gameLoop())
 	{

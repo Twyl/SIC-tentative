@@ -155,6 +155,7 @@ void game_update()
 		///////////スポーン場所選択///////////
 		if (GetAsyncKeyState('W') & 1)
 		{
+			sound::play(0, 0);
 			panel_mapY = panel_mapY - 60;
 
 			if (panel_mapY < 60)
@@ -165,6 +166,7 @@ void game_update()
 
 		if (GetAsyncKeyState('A') & 1)
 		{
+			sound::play(0, 0);
 			panel_mapX = panel_mapX - 60;
 
 			if (panel_mapX < 340)
@@ -175,6 +177,7 @@ void game_update()
 
 		if (GetAsyncKeyState('S') & 1)
 		{
+			sound::play(0, 0);
 			panel_mapY = panel_mapY + 60;
 
 			if (panel_mapY >= 600)
@@ -185,6 +188,7 @@ void game_update()
 
 		if (GetAsyncKeyState('D') & 1)
 		{
+			sound::play(0, 0);
 			panel_mapX = panel_mapX + 60;
 
 			if (panel_mapX >= 880)
@@ -195,7 +199,7 @@ void game_update()
 
 		if (TRG(0) & PAD_START)
 		{
-
+			sound::play(0, 0);
 		
 
 			game_state++;
@@ -212,6 +216,7 @@ void game_update()
 		//上方向
 		if (GetAsyncKeyState('W') & 1 && gameover_flag == false) 
 		{
+			sound::play(0, 0);
 			old_slimeX = slime_mapX;
 			old_slimeY = slime_mapY;
 
@@ -229,6 +234,7 @@ void game_update()
 		//左方向
 		if (GetAsyncKeyState('A') & 1 && gameover_flag == false)
 		{
+			sound::play(0, 0);
 			old_slimeX = slime_mapX;
 			old_slimeY = slime_mapY;
 
@@ -247,6 +253,7 @@ void game_update()
 		//下方向
 		if (GetAsyncKeyState('S') & 1 && gameover_flag == false)
 		{
+			sound::play(0, 0);
 			old_slimeX = slime_mapX;
 			old_slimeY = slime_mapY;
 
@@ -265,6 +272,7 @@ void game_update()
 		//右方向
 		if (GetAsyncKeyState('D') & 1 && gameover_flag == false)
 		{
+			sound::play(0, 0);
 			old_slimeX = slime_mapX;
 			old_slimeY = slime_mapY;
 
@@ -325,6 +333,7 @@ void game_update()
 			{
 				if (GetAsyncKeyState('A') & 1)
 				{
+					sound::play(0, 0);
 					panel2_mapX -= 60;
 					if (panel2_mapX < 570)
 					{
@@ -334,6 +343,7 @@ void game_update()
 
 				if (GetAsyncKeyState('D') & 1)
 				{
+					sound::play(0, 0);
 					panel2_mapX += 60;
 					if (panel2_mapX >= 630)
 					{
@@ -343,6 +353,7 @@ void game_update()
 
 				if (TRG(0) & PAD_START)
 				{
+					sound::play(0, 0);
 					if (panel2_mapX == 570)
 					{
 						gameover_flag = false;
@@ -367,6 +378,7 @@ void game_update()
 			{
 				if (GetAsyncKeyState('A') & 1)
 				{
+					sound::play(0, 0);
 					panel2_mapX -= 60;
 					if (panel2_mapX < 510)
 					{
@@ -376,6 +388,7 @@ void game_update()
 
 				if (GetAsyncKeyState('D') & 1)
 				{
+					sound::play(0, 0);
 					panel2_mapX += 60;
 					if (panel2_mapX >= 630)
 					{
@@ -385,6 +398,7 @@ void game_update()
 
 				if (TRG(0) & PAD_START)
 				{
+					sound::play(0, 0);
 					if (panel2_mapX == 510)
 					{
 						gameover_flag = false;
@@ -417,6 +431,7 @@ void game_update()
 
 	//debug::setString("game_state%d", game_state);
 	//debug::setString("panel_mapX%d", panel_mapX);
+	
 	
 }
 

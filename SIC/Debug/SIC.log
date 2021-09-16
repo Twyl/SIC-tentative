@@ -1,1 +1,22 @@
-﻿  SIC.vcxproj -> D:\Projects\SIC(仮)\SIC-tentative\SIC\Debug\SIC.exe
+﻿  scene_game.cpp
+D:\Projects\SIC(仮)\SIC-tentative\SIC\SourceCode\scene_game.cpp(110,10): warning C4244: '=': 'float' から 'int' への変換です。データが失われる可能性があります。
+D:\Projects\SIC(仮)\SIC-tentative\SIC\SourceCode\scene_game.cpp(207,17): warning C4244: '=': 'int' から 'float' への変換です。データが失われる可能性があります。
+D:\Projects\SIC(仮)\SIC-tentative\SIC\SourceCode\scene_game.cpp(208,17): warning C4244: '=': 'int' から 'float' への変換です。データが失われる可能性があります。
+D:\Projects\SIC(仮)\SIC-tentative\SIC\SourceCode\scene_game.cpp(290,36): warning C4244: '=': 'float' から 'int' への変換です。データが失われる可能性があります。
+D:\Projects\SIC(仮)\SIC-tentative\SIC\SourceCode\scene_game.cpp(291,35): warning C4244: '=': 'float' から 'int' への変換です。データが失われる可能性があります。
+D:\Projects\SIC(仮)\SIC-tentative\SIC\SourceCode\scene_game.cpp(479,5): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
+D:\Projects\SIC(仮)\SIC-tentative\SIC\SourceCode\scene_game.cpp(478,13): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
+D:\Projects\SIC(仮)\SIC-tentative\SIC\SourceCode\scene_game.cpp(478,5): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
+D:\Projects\SIC(仮)\SIC-tentative\SIC\SourceCode\scene_game.cpp(474,13): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
+D:\Projects\SIC(仮)\SIC-tentative\SIC\SourceCode\scene_game.cpp(474,5): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
+D:\Projects\SIC(仮)\SIC-tentative\SIC\SourceCode\scene_game.cpp(501,4): warning C4305: '引数': 'double' から 'float' へ切り詰めます。
+D:\Projects\SIC(仮)\SIC-tentative\SIC\SourceCode\scene_game.cpp(494,17): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
+D:\Projects\SIC(仮)\SIC-tentative\SIC\SourceCode\scene_game.cpp(494,5): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
+D:\Projects\SIC(仮)\SIC-tentative\SIC\SourceCode\scene_game.cpp(558,5): warning C4305: '引数': 'double' から 'float' へ切り詰めます。
+D:\Projects\SIC(仮)\SIC-tentative\SIC\SourceCode\scene_game.cpp(551,6): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
+D:\Projects\SIC(仮)\SIC-tentative\SIC\SourceCode\scene_game.cpp(587,5): warning C4305: '引数': 'double' から 'float' へ切り詰めます。
+D:\Projects\SIC(仮)\SIC-tentative\SIC\SourceCode\scene_game.cpp(580,6): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
+D:\Projects\SIC(仮)\SIC-tentative\SIC\SourceCode\scene_game.cpp(596,2): warning C4305: '引数': 'double' から 'float' へ切り詰めます。
+D:\Projects\SIC(仮)\SIC-tentative\SIC\SourceCode\scene_game.cpp(611,2): warning C4305: '引数': 'double' から 'float' へ切り詰めます。
+D:\Projects\SIC(仮)\SIC-tentative\SIC\SourceCode\scene_game.cpp(618,2): warning C4305: '引数': 'double' から 'float' へ切り詰めます。
+  SIC.vcxproj -> D:\Projects\SIC(仮)\SIC-tentative\SIC\Debug\SIC.exe

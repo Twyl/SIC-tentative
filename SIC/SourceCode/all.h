@@ -6,7 +6,7 @@
 
 
 #include "common.h"
-
+#include "audio.h"
 
 #include "scene_title.h"
 #include "scene_game.h"
