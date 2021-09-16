@@ -7,7 +7,7 @@ int APIENTRY wWinMain(HINSTANCE, HINSTANCE, LPWSTR, int)
 {
 
 	//ƒQ[ƒ€ƒ‰ƒCƒuƒ‰ƒŠ‚Ì‰ŠúÝ’è
-	GameLib::init(L"SICŠé‰æ(‰¼)", SCREEN_W, SCREEN_H);
+	GameLib::init(L"‚¨‚¿‚é‚·‚ç‚¢‚Þ ‚¨‚¿‚·‚ç", SCREEN_W, SCREEN_H);
 
 	audio_init();
 

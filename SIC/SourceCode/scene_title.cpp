@@ -60,7 +60,6 @@ void title_update()
 void title_render()
 {
 	GameLib::clear(0, 0, 0);
-
-
 	sprite_render(title, 0, 0);
+	text_out(2, "Press Enter Key", SCREEN_W / 2, SCREEN_H / 4 * 3, 1, 1, 1, 1, 1, 1, TEXT_ALIGN::MIDDLE);
 }

@@ -57,9 +57,9 @@ void stage_update()
 		{
 			Stagenum += 1;
 			sound::play(0, 0);
-			if (Stagenum >= 8)
+			if (Stagenum >= MAX_STAGE_NUM + 1)
 			{
-				Stagenum = 7;
+				Stagenum = MAX_STAGE_NUM;
 			}
 		}
 		if (TRG(0) & PAD_START)
@@ -91,5 +91,6 @@ void stage_render()
 	ss << Stagenum;
 	stage_select_str = "Stage" + ss.str();
 	text_out(2, stage_select_str, SCREEN_W / 2, SCREEN_H / 4 * 2.2f, 1.7f, 1.7f, 1, 1, 1, 1, TEXT_ALIGN::MIDDLE);
+	text_out(2, "'A'key +                  'D'key -", SCREEN_W / 2, SCREEN_H / 4 * 2.2f, 1, 1, 1, 1, 1, 0.5f, TEXT_ALIGN::MIDDLE);
 	text_out(2, "\"Enter\" to Start", SCREEN_W / 2, SCREEN_H / 4 * 2.7f, 1.2f, 1.2f, 1, 1, 1, 1, TEXT_ALIGN::MIDDLE);
 }

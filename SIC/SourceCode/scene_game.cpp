@@ -4,6 +4,7 @@
 #include "Stage_data.h"
 
 using namespace std;
+using namespace GameLib;
 
 ifstream ifs;
 string str;
@@ -307,7 +308,7 @@ void game_update()
 					{
 						gameclear_flag = true;
 
-						panel2_mapX = 570 - 60;
+						if(stageNum<MAX_STAGE_NUM)panel2_mapX = 570 - 60;
 						game_state = 4;
 					}
 					
@@ -327,9 +328,60 @@ void game_update()
 
 
 		case 4:
+			if (gameclear_flag && stageNum < MAX_STAGE_NUM)
+			{
+				if (GetAsyncKeyState('A') & 1)
+				{
+					sound::play(0, 0);
+					panel2_mapX -= 60;
+					if (panel2_mapX < 510)
+					{
+						panel2_mapX = 510;
+					}
+				}
 
+				if (GetAsyncKeyState('D') & 1)
+				{
+					sound::play(0, 0);
+					panel2_mapX += 60;
+					if (panel2_mapX >= 630)
+					{
+						panel2_mapX = 630;
+					}
+				}
+
+				if (TRG(0) & PAD_START)
+				{
+					sound::play(0, 0);
+					if (panel2_mapX == 510)
+					{
+						gameover_flag = false;
+						gameclear_flag = false;
+						stageNum += 1;
+						nextScene = SCENE_RELOAD;
+
+						break;
+					}
+					if (panel2_mapX == 570)
+					{
+						gameover_flag = false;
+						gameclear_flag = false;
+						nextScene = SCENE_RELOAD;
+						break;
+					}
+
+					if (panel2_mapX == 630)
+					{
+						gameover_flag = false;
+						gameclear_flag = false;
+						nextScene = SCENE_STAGE;
+						break;
+					}
+				}
+			}
 			
-			if (gameover_flag&&!gameclear_flag)
+			/*if (gameover_flag&&!gameclear_flag)*/
+			else
 			{
 				if (GetAsyncKeyState('A') & 1)
 				{
@@ -374,57 +426,7 @@ void game_update()
 			}
 			
 			
-			if (gameclear_flag)
-			{
-				if (GetAsyncKeyState('A') & 1)
-				{
-					sound::play(0, 0);
-					panel2_mapX -= 60;
-					if (panel2_mapX < 510)
-					{
-						panel2_mapX = 510;
-					}
-				}
-
-				if (GetAsyncKeyState('D') & 1)
-				{
-					sound::play(0, 0);
-					panel2_mapX += 60;
-					if (panel2_mapX >= 630)
-					{
-						panel2_mapX = 630;
-					}
-				}
-
-				if (TRG(0) & PAD_START)
-				{
-					sound::play(0, 0);
-					if (panel2_mapX == 510)
-					{
-						gameover_flag = false;
-						gameclear_flag = false;
-						stageNum += 1;
-						nextScene = SCENE_RELOAD;
-						
-						break;
-					}
-					if (panel2_mapX == 570)
-					{
-						gameover_flag = false;
-						gameclear_flag = false;
-						nextScene = SCENE_RELOAD;
-						break;
-					}
-
-					if (panel2_mapX == 630)
-					{
-						gameover_flag = false;
-						gameclear_flag = false;
-						nextScene = SCENE_STAGE;
-						break;
-					}
-				}
-			}
+			
 	}
 
 	game_timer++;
@@ -513,54 +515,13 @@ void game_render()
 				0, 0
 			);		
 
-		
-
-
-
-
-
-
-
-
-
-
 			break;
 
 		case 4:
 
-			if (gameover_flag && !gameclear_flag)
+			if (gameclear_flag && stageNum < MAX_STAGE_NUM)
 			{
-				text_out(
-					1,
-					"GAMEOVER",
-					360, 340,
-					2, 2
-				);
-
-				sprite_render(
-					button,
-					SCREEN_W / 2 - 10, 420,
-					1, 1,
-					60, 0,
-					120, 60,
-					60, 0
-				);
-
-				sprite_render(
-					Redpanel2,
-					panel2_mapX, 420,
-					1, 1,
-					0, 0,
-					60, 60,
-					0, 0,
-					0,
-					1, 0, 0, 0.6
-				);
-			}
-
-			if (gameclear_flag)
-			{
-				text_out(
+				GameLib::text_out(
 					1,
 					"GAMECLEAR",
 					360, 340,
@@ -587,6 +548,45 @@ void game_render()
 				);
 
 			}
+			else
+			{	
+				if(gameclear_flag)
+					GameLib::text_out(
+						1,
+						"GAMECLEAR",
+						360, 340,
+						2, 2
+					);
+				else if(gameover_flag)
+				GameLib::text_out(
+					1,
+					"GAMEOVER",
+					360, 340,
+					2, 2
+				);
+				
+				sprite_render(
+					button,
+					SCREEN_W / 2 - 10, 420,
+					1, 1,
+					60, 0,
+					120, 60,
+					60, 0
+				);
+
+				sprite_render(
+					Redpanel2,
+					panel2_mapX, 420,
+					1, 1,
+					0, 0,
+					60, 60,
+					0, 0,
+					0,
+					1, 0, 0, 0.6
+				);
+			}
+
+			
 	}
 	sprite_render
 	(
@@ -603,14 +603,14 @@ void game_render()
 
 
 
-	text_out(
+	GameLib::text_out(
 		1,
 		"MOVE : WASD",
 		1000, 200,
 		0.7, 0.7
 	);
 
-	text_out(
+	GameLib::text_out(
 		1,
 		"DECIDE : ENTER",
 		970, 300,
