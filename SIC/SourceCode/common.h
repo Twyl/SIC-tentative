@@ -14,7 +14,8 @@
 #define SCREEN_H	720
 
 
-
+#define ToRadian( x )   DirectX::XMConvertToRadians( x )    // 角度をラジアンに
+#define ToDegree( x )   DirectX::XMConvertToDegrees( x )    // ラジアンを角度に
 
 extern int curScene;
 extern int nextScene;

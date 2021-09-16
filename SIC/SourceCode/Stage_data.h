@@ -16,5 +16,6 @@ char Mapchip_list[MAPSIZE_H][MAPSIZE_W];
 
 
 
+
 #endif
 

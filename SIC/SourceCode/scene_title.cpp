@@ -32,12 +32,17 @@ void title_update()
 	case 1:
 		///////////ƒpƒ‰ƒ[ƒ^‚Ìİ’è///////////
 		GameLib::setBlendMode(Blender::BS_ALPHA);
+		worldNum = 1;
+		stageNum = 1;
 		title_state++;
 		/*fallthrough*/
 
 	
 	case 2:
 		///////////’Êí///////////
+
+	
+
 
 		if (TRG(0) & PAD_START)
 		{

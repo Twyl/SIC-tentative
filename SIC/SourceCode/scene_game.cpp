@@ -32,6 +32,11 @@ int old_slimeY;
 int old_panelX;
 int old_panelY;
 
+int scaleX;
+int scaleY;
+
+int angle;
+
 int clearCount;
 
 bool gameover_flag = false;
@@ -53,7 +58,10 @@ void Change_panel() {
 
 	if (Mapchip_list[old_slimeY][old_slimeX] == 1)
 	{
+
+
 		Mapchip_list[old_slimeY][old_slimeX] = 0;
+
 	}
 
 
@@ -95,6 +103,11 @@ void game_init()
 
 	old_panelX = 0;
 	old_panelY = 0;
+
+	scaleX = 1;
+	scaleY = 1;
+
+	angle = ToRadian(0);
 
 	clearCount = 0;
 
@@ -197,7 +210,7 @@ void game_update()
 
 		
 		//è„ï˚å¸
-		if (GetAsyncKeyState('W') & 1 && gameover_flag == false && Animation_flag == false) 
+		if (GetAsyncKeyState('W') & 1 && gameover_flag == false) 
 		{
 			old_slimeX = slime_mapX;
 			old_slimeY = slime_mapY;
@@ -211,11 +224,10 @@ void game_update()
 
 			Change_panel();
 			
-			Animation_flag = true;
 		}
 
 		//ç∂ï˚å¸
-		if (GetAsyncKeyState('A') & 1 && gameover_flag == false && Animation_flag == false)
+		if (GetAsyncKeyState('A') & 1 && gameover_flag == false)
 		{
 			old_slimeX = slime_mapX;
 			old_slimeY = slime_mapY;
@@ -229,12 +241,11 @@ void game_update()
 
 			Change_panel();
 
-			Animation_flag = true;
 
 		}
 		
 		//â∫ï˚å¸
-		if (GetAsyncKeyState('S') & 1 && gameover_flag == false && Animation_flag == false)
+		if (GetAsyncKeyState('S') & 1 && gameover_flag == false)
 		{
 			old_slimeX = slime_mapX;
 			old_slimeY = slime_mapY;
@@ -248,12 +259,11 @@ void game_update()
 
 			Change_panel();
 
-			Animation_flag = true;
 
 		}
 
 		//âEï˚å¸
-		if (GetAsyncKeyState('D') & 1 && gameover_flag == false && Animation_flag == false)
+		if (GetAsyncKeyState('D') & 1 && gameover_flag == false)
 		{
 			old_slimeX = slime_mapX;
 			old_slimeY = slime_mapY;
@@ -267,7 +277,6 @@ void game_update()
 
 			Change_panel();
 
-			Animation_flag = true;
 
 		}
 		slime_mapX = (slime.pos.x - 340) / 60;
@@ -310,7 +319,7 @@ void game_update()
 		case 4:
 
 			
-			if (gameover_flag)
+			if (gameover_flag&&!gameclear_flag)
 			{
 				if (GetAsyncKeyState('A') & 1)
 				{
@@ -334,12 +343,67 @@ void game_update()
 				{
 					if (panel2_mapX == 570)
 					{
+						gameover_flag = false;
+						gameclear_flag = false;
 						nextScene = SCENE_RELOAD;
 						break;
 					}
 
 					if (panel2_mapX == 630)
 					{
+						gameover_flag = false;
+						gameclear_flag = false;
+						nextScene = SCENE_STAGE;
+						break;
+					}
+				}
+				break;
+			}
+			
+			
+			if (gameclear_flag)
+			{
+				if (GetAsyncKeyState('A') & 1)
+				{
+					panel2_mapX -= 60;
+					if (panel2_mapX < 510)
+					{
+						panel2_mapX = 510;
+					}
+				}
+
+				if (GetAsyncKeyState('D') & 1)
+				{
+					panel2_mapX += 60;
+					if (panel2_mapX >= 630)
+					{
+						panel2_mapX = 630;
+					}
+				}
+
+				if (TRG(0) & PAD_START)
+				{
+					if (panel2_mapX == 510)
+					{
+						gameover_flag = false;
+						gameclear_flag = false;
+						stageNum += 1;
+						nextScene = SCENE_RELOAD;
+						
+						break;
+					}
+					if (panel2_mapX == 570)
+					{
+						gameover_flag = false;
+						gameclear_flag = false;
+						nextScene = SCENE_RELOAD;
+						break;
+					}
+
+					if (panel2_mapX == 630)
+					{
+						gameover_flag = false;
+						gameclear_flag = false;
 						nextScene = SCENE_STAGE;
 						break;
 					}
@@ -349,8 +413,8 @@ void game_update()
 
 	game_timer++;
 
-	debug::setString("game_state%d", game_state);
-	debug::setString("panel_mapX%d", panel_mapX);
+	//debug::setString("game_state%d", game_state);
+	//debug::setString("panel_mapX%d", panel_mapX);
 	
 }
 
@@ -394,7 +458,8 @@ void game_render()
 				1, 1,
 				chip_pos_x, chip_pos_y,
 				MAPCHIP_W, MAPCHIP_H,
-				0, 0
+				scaleX, scaleY,
+				angle
 			);
 
 
@@ -431,10 +496,7 @@ void game_render()
 				0, 0
 			);		
 
-			if (Animation_flag)
-			{
-
-			}
+		
 
 
 
@@ -487,6 +549,26 @@ void game_render()
 					360, 340,
 					2, 2
 				);
+				sprite_render(
+					button,
+					510, 420,
+					1, 1,
+					0, 0,
+					180, 60,
+					0, 0
+				);
+
+				sprite_render(
+					Redpanel2,
+					panel2_mapX, 420,
+					1, 1,
+					0, 0,
+					60, 60,
+					0, 0,
+					0,
+					1, 0, 0, 0.6
+				);
+
 			}
 	}
 	sprite_render
@@ -502,12 +584,7 @@ void game_render()
 
 
 
-	text_out(
-		1,
-		"DEMO",
-		1000, 100,
-		1, 1
-	);
+
 
 	text_out(
 		1,
@@ -527,17 +604,13 @@ void game_render()
 
 void read() {
 
-	worldNum = 1;
-	stageNum = 1;
-
-
 
 	filepath = (string)"./Data/Stage/" + to_string(worldNum) + (string)"-" + to_string(stageNum) + (string)".txt";
 	ifs.open(filepath);
 
 	ifs >> str;
 
-	ifs.close();
+	ifs.close();	
 
 
 	for (int i = 0; i < MAPSIZE_H; i++)
@@ -545,7 +618,7 @@ void read() {
 		for (int j = 0; j < MAPSIZE_W; j++)
 		{
 
-			Mapchip_list[i][j] = (char)str[i*10+j];
+			Mapchip_list[i][j] = (char)str[i * 10 + j] - 48;
 			
 		}
 	}
