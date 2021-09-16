@@ -3,7 +3,7 @@
 int title_state;
 int title_timer;
 
-Sprite* slime;
+Sprite* title;
 
 void title_init()
 {
@@ -14,7 +14,7 @@ void title_init()
 
 void title_deinit()
 {
-	safe_delete(slime);
+	safe_delete(title);
 }
 
 
@@ -24,7 +24,7 @@ void title_update()
 	{
 	case 0:
 		///////////‰Šúİ’è///////////
-		slime = sprite_load(L"./Data/Images/slime_idle.png");
+		title = sprite_load(L"./Data/Images/Title.png");
 		title_state++;
 		/*fallthrough*/
 
@@ -56,5 +56,5 @@ void title_render()
 	GameLib::clear(0, 0, 0);
 
 
-	sprite_render(slime, 200, 200);
+	sprite_render(title, 0, 0);
 }

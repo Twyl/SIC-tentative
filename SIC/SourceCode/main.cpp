@@ -39,6 +39,7 @@ int APIENTRY wWinMain(HINSTANCE, HINSTANCE, LPWSTR, int)
 				title_init();
 				break;
 
+
 			case SCENE_STAGE:
 				stage_init();
 			

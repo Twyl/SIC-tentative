@@ -1,5 +1,16 @@
+#include <fstream>
 #include "all.h"
 #include "Stage_data.h"
+
+using namespace std;
+
+ifstream ifs;
+string str;
+char save_str;
+string filepath;
+
+int worldNum;
+int stageNum;
 
 int game_state;
 int game_timer;
@@ -33,6 +44,8 @@ Sprite* panel;
 Sprite* Redpanel;
 Sprite* Redpanel2;
 Sprite* button;
+Sprite* Back;
+Sprite* UI;
 
 void Change_panel() {
 
@@ -82,6 +95,8 @@ void game_init()
 	old_panelY = 0;
 
 	clearCount = 0;
+
+	//read();
 	
 }
 
@@ -94,6 +109,8 @@ void game_deinit()
 	safe_delete(Redpanel);
 	safe_delete(Redpanel2);
 	safe_delete(button);
+	safe_delete(Back);
+	safe_delete(UI);
 }
 
 void game_update()
@@ -109,6 +126,8 @@ void game_update()
 		Redpanel = sprite_load(L"./Data/Images/RED.png");
 		Redpanel2 = sprite_load(L"./Data/Images/RED.png");
 		button = sprite_load(L"./Data/Images/button.png");
+		Back = sprite_load(L"./Data/Images/Back.png");
+		UI = sprite_load(L"./Data/Images/UI.png");
 
 		game_state++;
 		/*fallthrough*/
@@ -329,6 +348,19 @@ void game_render()
 {
 	GameLib::clear(0, 0, 0);
 
+	sprite_render
+	(
+		Back,
+		0, 0,
+		1, 1
+	);
+	sprite_render
+	(
+		UI,
+		0, 0,
+		1, 1
+	);
+
 
 
 
@@ -444,6 +476,8 @@ void game_render()
 
 
 
+
+
 	text_out(
 		1,
 		"DEMO",
@@ -466,3 +500,30 @@ void game_render()
 	);
 
 }
+
+//void read() {
+//
+//	worldNum = 1;
+//	stageNum = 1;
+//
+//
+//
+//	filepath = (char)"./Data/Stage/" + worldNum + (char)"-" + stageNum + (char)".txt";
+//	ifs.open(filepath);
+//
+//	ifs >> str;
+//
+//	ifs.close();
+//
+//
+//	for (int i = 0; i < MAPSIZE_H; i++)
+//	{
+//		for (int j = 0; j < MAPSIZE_W; j++)
+//		{
+//
+//			Mapchip_list[i][j] = str[i*10+j];
+//			
+//		}
+//	}
+//
+//}
