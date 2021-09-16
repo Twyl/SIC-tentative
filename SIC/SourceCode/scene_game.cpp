@@ -298,6 +298,8 @@ void game_update()
 					if (clearCount == 100)
 					{
 						gameclear_flag = true;
+
+						panel2_mapX = 570 - 60;
 						game_state = 4;
 					}
 					

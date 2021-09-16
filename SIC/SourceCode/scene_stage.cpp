@@ -55,9 +55,9 @@ void stage_update()
 		if (GetAsyncKeyState('D') & 1)
 		{
 			Stagenum += 1;
-			if (Stagenum >= 6)
+			if (Stagenum >= 7)
 			{
-				Stagenum = 5;
+				Stagenum = 6;
 			}
 		}
 		if (TRG(0) & PAD_START)
@@ -76,7 +76,6 @@ void stage_render()
 {
 	GameLib::clear(0, 0, 0);
 
-	debug::setString("%d",Stagenum);
 	sprite_render
 	(
 		BackGround,
