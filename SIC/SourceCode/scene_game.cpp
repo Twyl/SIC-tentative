@@ -1,4 +1,5 @@
 #include <fstream>
+#include <string>
 #include "all.h"
 #include "Stage_data.h"
 
@@ -35,11 +36,12 @@ int clearCount;
 
 bool gameover_flag = false;
 bool gameclear_flag = false;
+bool Animation_flag = false;
 
 
 Sprite* Frame;
 Sprite* Mapchip;
-Sprite* p_slime;
+Sprite* slime_motion;
 Sprite* panel;
 Sprite* Redpanel;
 Sprite* Redpanel2;
@@ -96,7 +98,7 @@ void game_init()
 
 	clearCount = 0;
 
-	//read();
+	read();
 	
 }
 
@@ -104,7 +106,7 @@ void game_deinit()
 {
 	safe_delete(Frame);
 	safe_delete(Mapchip);
-	safe_delete(p_slime);
+	safe_delete(slime_motion);
 	safe_delete(panel);
 	safe_delete(Redpanel);
 	safe_delete(Redpanel2);
@@ -122,7 +124,7 @@ void game_update()
 		///////////‰ŠúÝ’è///////////
 		Frame = sprite_load(L"./Data/Images/Frame.png");
 		Mapchip = sprite_load(L"./Data/Images/ƒpƒlƒ‹‘fÞ.png");
-		p_slime = sprite_load(L"./Data/Images/slime_idle.png");
+		slime_motion = sprite_load(L"./Data/Images/Motion.png");
 		Redpanel = sprite_load(L"./Data/Images/RED.png");
 		Redpanel2 = sprite_load(L"./Data/Images/RED.png");
 		button = sprite_load(L"./Data/Images/button.png");
@@ -195,7 +197,7 @@ void game_update()
 
 		
 		//ã•ûŒü
-		if (GetAsyncKeyState('W') & 1&&gameover_flag==false) 
+		if (GetAsyncKeyState('W') & 1 && gameover_flag == false && Animation_flag == false) 
 		{
 			old_slimeX = slime_mapX;
 			old_slimeY = slime_mapY;
@@ -209,10 +211,11 @@ void game_update()
 
 			Change_panel();
 			
+			Animation_flag = true;
 		}
 
 		//¶•ûŒü
-		if (GetAsyncKeyState('A') & 1 && gameover_flag == false)
+		if (GetAsyncKeyState('A') & 1 && gameover_flag == false && Animation_flag == false)
 		{
 			old_slimeX = slime_mapX;
 			old_slimeY = slime_mapY;
@@ -226,10 +229,12 @@ void game_update()
 
 			Change_panel();
 
+			Animation_flag = true;
+
 		}
 		
 		//‰º•ûŒü
-		if (GetAsyncKeyState('S') & 1 && gameover_flag == false)
+		if (GetAsyncKeyState('S') & 1 && gameover_flag == false && Animation_flag == false)
 		{
 			old_slimeX = slime_mapX;
 			old_slimeY = slime_mapY;
@@ -243,10 +248,12 @@ void game_update()
 
 			Change_panel();
 
+			Animation_flag = true;
+
 		}
 
 		//‰E•ûŒü
-		if (GetAsyncKeyState('D') & 1 && gameover_flag == false)
+		if (GetAsyncKeyState('D') & 1 && gameover_flag == false && Animation_flag == false)
 		{
 			old_slimeX = slime_mapX;
 			old_slimeY = slime_mapY;
@@ -259,6 +266,8 @@ void game_update()
 			}
 
 			Change_panel();
+
+			Animation_flag = true;
 
 		}
 		slime_mapX = (slime.pos.x - 340) / 60;
@@ -342,6 +351,7 @@ void game_update()
 
 	debug::setString("game_state%d", game_state);
 	debug::setString("panel_mapX%d", panel_mapX);
+	
 }
 
 void game_render()
@@ -413,13 +423,27 @@ void game_render()
 		case 3:
 			sprite_render
 			(
-				p_slime,
+				slime_motion,
 				slime.pos.x, slime.pos.y,
 				1, 1,
 				0, 0,
 				60, 60,
 				0, 0
 			);		
+
+			if (Animation_flag)
+			{
+
+			}
+
+
+
+
+
+
+
+
+
 
 			break;
 
@@ -501,29 +525,29 @@ void game_render()
 
 }
 
-//void read() {
-//
-//	worldNum = 1;
-//	stageNum = 1;
-//
-//
-//
-//	filepath = (char)"./Data/Stage/" + worldNum + (char)"-" + stageNum + (char)".txt";
-//	ifs.open(filepath);
-//
-//	ifs >> str;
-//
-//	ifs.close();
-//
-//
-//	for (int i = 0; i < MAPSIZE_H; i++)
-//	{
-//		for (int j = 0; j < MAPSIZE_W; j++)
-//		{
-//
-//			Mapchip_list[i][j] = str[i*10+j];
-//			
-//		}
-//	}
-//
-//}
+void read() {
+
+	worldNum = 1;
+	stageNum = 1;
+
+
+
+	filepath = (string)"./Data/Stage/" + to_string(worldNum) + (string)"-" + to_string(stageNum) + (string)".txt";
+	ifs.open(filepath);
+
+	ifs >> str;
+
+	ifs.close();
+
+
+	for (int i = 0; i < MAPSIZE_H; i++)
+	{
+		for (int j = 0; j < MAPSIZE_W; j++)
+		{
+
+			Mapchip_list[i][j] = (char)str[i*10+j];
+			
+		}
+	}
+
+}
