@@ -1,9 +1,17 @@
 #include "all.h"
+#include <sstream>
+#include <string>
 
 int stage_state;
 int stage_timer;
 
 int Stagenum;
+
+std::string stage_select_str;
+
+Sprite* BackGround;
+
+std::ostringstream ss;
 
 void stage_init()
 {
@@ -29,6 +37,7 @@ void stage_update()
 	case 1:
 		///////////ÉpÉâÉÅÅ[É^ÇÃê›íË///////////
 		GameLib::setBlendMode(Blender::BS_ALPHA);
+		BackGround = sprite_load(L"./Data/Images/Back.png");
 		stage_state++;
 		/*fallthrough*/
 
@@ -53,7 +62,7 @@ void stage_update()
 		}
 		if (TRG(0) & PAD_START)
 		{
-
+			stageNum = Stagenum;
 
 			nextScene = SCENE_GAME;
 			break;
@@ -65,5 +74,20 @@ void stage_update()
 }
 void stage_render()
 {
-	GameLib::clear(1, 0, 0);
+	GameLib::clear(0, 0, 0);
+
+	debug::setString("%d",Stagenum);
+	sprite_render
+	(
+		BackGround,
+		0, 0,
+		1, 1
+	);
+
+	text_out(2, "Select Stage", SCREEN_W / 2, SCREEN_H / 4, 1, 1, 1, 1, 1, 1, TEXT_ALIGN::MIDDLE);
+	ss.str("");
+	ss << Stagenum;
+	stage_select_str = "Stage" + ss.str();
+	text_out(2, stage_select_str, SCREEN_W / 2, SCREEN_H / 4 * 2.2f, 1.7f, 1.7f, 1, 1, 1, 1, TEXT_ALIGN::MIDDLE);
+	text_out(2, "\"Enter\" to Start", SCREEN_W / 2, SCREEN_H / 4 * 2.7f, 1.2f, 1.2f, 1, 1, 1, 1, TEXT_ALIGN::MIDDLE);
 }
